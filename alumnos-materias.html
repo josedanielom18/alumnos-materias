@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Notas de Alumnos</title>
+  </head>
+  <body>
+    <h1>Notas de Alumnos</h1>
+
+    <script>
+   // Crea un arreglo para almacenar las tarjetas de datos
+let tarjetasDatos = [];
+
+// Lee 10 tarjetas de datos para cada punto
+for (let j = 0; j <= 1; j++) {
+  console.log(`Ingrese 1 tarjetas de datos para el punto ${String.fromCharCode(64+j)}:`);
+  for (let i = 1; i <= 5; i++) {
+    let cedula = prompt(`Ingrese la cédula de identidad del alumno ${i}:`);
+    let nombre = prompt(`Ingrese el nombre del alumno ${i}:`);
+    let notaMatematicas = parseFloat(prompt(`Ingrese la nota de matemáticas del alumno ${i}:`));
+    let notaFisica = parseFloat(prompt(`Ingrese la nota de física del alumno ${i}:`));
+    let notaProgramacion = parseFloat(prompt(`Ingrese la nota de programación del alumno ${i}:`));
+       // Agrega la tarjeta de datos al arreglo
+       tarjetasDatos.push({cedula, nombre, notaMatematicas, notaFisica, notaProgramacion, punto: String.fromCharCode(64+j)});
+      }
+  }
+  
+    
+    // Muestra las tarjetas de datos almacenadas en el arreglo
+    console.log("Tarjetas de datos ingresadas:");
+    console.log(tarjetasDatos);
+
+      // Calculamos la nota promedio de cada materia
+      let promedioMatematicas = 0;
+      let promedioFisica = 0;
+      let promedioProgramacion = 0;
+
+      for (let i = 0; i < tarjetas.length; i++) {
+        promedioMatematicas += tarjetas[i].notaMatematicas;
+        promedioFisica += tarjetas[i].notaFisica;
+        promedioProgramacion += tarjetas[i].notaProgramacion;
+      }
+
+      promedioMatematicas /= tarjetas.length;
+      promedioFisica /= tarjetas.length;
+      promedioProgramacion /= tarjetas.length;
+
+      console.log(`Nota promedio de matemáticas: ${promedioMatematicas.toFixed(2)}`);
+      console.log(`Nota promedio de física: ${promedioFisica.toFixed(2)}`);
+      console.log(`Nota promedio de programación: ${promedioProgramacion.toFixed(2)}`);
+
+      // Calculamos la cantidad de alumnos aprobados en cada materia
+      // Inicializamos los contadores en 0
+let aprobadosMatematicas = 0;
+let aprobadosFisica = 0;
+let aprobadosProgramacion = 0;
+
+// Iteramos sobre el arreglo de tarjetas y contamos el número de alumnos aprobados en cada materia
+for (let i = 0; i < tarjetas.length; i++) {
+  if (tarjetas[i].notaMatematicas >= 10) {
+    aprobadosMatematicas++;
+  }
+  if (tarjetas[i].notaFisica >= 10) {
+    aprobadosFisica++;
+  }
+  if (tarjetas[i].notaProgramacion >= 10) {
+    aprobadosProgramacion++;
+  }
+}
+
+// Mostramos los resultados
+console.log(`El número de alumnos aprobados en matemáticas es: ${aprobadosMatematicas}`);
+console.log(`El número de alumnos aprobados en física es: ${aprobadosFisica}`);
+console.log(`El número de alumnos aprobados en programación es: ${aprobadosProgramacion}`);
+
+
+// Iteramos sobre el arreglo de tarjetas y contamos el número de alumnos aplazados en cada materia
+for (let i = 0; i < tarjetas.length; i++) {
+  if (tarjetas[i].notaMatematicas < 10) {
+    aplazadosMatematicas++;
+  }
+  if (tarjetas[i].notaFisica < 10) {
+    aplazadosFisica++;
+  }
+  if (tarjetas[i].notaProgramacion < 10) {
+    aplazadosProgramacion++;
+  }
+}
+
+// Mostramos los resultados
+console.log(`El número de alumnos aplazados en matemáticas es: ${aplazadosMatematicas}`);
+console.log(`El número de alumnos aplazados en física es: ${aplazadosFisica}`);
+console.log(`El número de alumnos aplazados en programación es: ${aplazadosProgramacion}`);
+// Inicializamos el contador en 0
+let aprobadosTodas = 0;
+
+// Iteramos sobre el arreglo de tarjetas y contamos el número de alumnos que aprobaron todas las materias
+for (let i = 0; i < tarjetas.length; i++) {
+  if (tarjetas[i].notaMatematicas >= 10 && tarjetas[i].notaFisica >= 10 && tarjetas[i].notaProgramacion >= 10) {
+    aprobadosTodas++;
+  }
+}
+
+// Mostramos el resultado
+console.log(`El número de alumnos que aprobaron todas las materias es: ${aprobadosTodas}`);
+// Inicializamos el contador en 0
+let aprobadosUnaSolaMateria = 0;
+
+// Iteramos sobre el arreglo de tarjetas y contamos el número de alumnos que aprobaron una sola materia
+for (let i = 0; i < tarjetas.length; i++) {
+  let sumaNotas = tarjetas[i].notaMatematicas + tarjetas[i].notaFisica + tarjetas[i].notaProgramacion;
+  if (sumaNotas >= 30) {
+    continue; 
+    // Si la suma de las notas es mayor o igual a 30, entonces no se considera que el alumno aprobó solo una materia.
+  }
+  let aprobadas = 0;
+  if (tarjetas[i].notaMatematicas >= 10) {
+    aprobadas++;
+  }
+  if (tarjetas[i].notaFisica >= 10) {
+    aprobadas++;
+  }
+  if (tarjetas[i].notaProgramacion >= 10) {
+    aprobadas++;
+  }
+  if (aprobadas === 1) {
+    aprobadosUnaSolaMateria++;
+  }
+  }
+
+  // Mostramos el resultado
+ console.log(`El número de alumnos que aprobaron una sola materia es: ${aprobadosUnaSolaMateria}`);
+ // Inicializamos el contador en 0
+  let aprobadosDosMaterias = 0;
+
+  // Iteramos sobre el arreglo de tarjetas y contamos el número de alumnos que aprobaron dos materias
+  for (let i = 0; i < tarjetas.length; i++) {
+  let sumaNotas = tarjetas[i].notaMatematicas + tarjetas[i].notaFisica + tarjetas[i].notaProgramacion;
+  if (sumaNotas < 30) {
+    let aprobadas = 0;
+    if (tarjetas[i].notaMatematicas >= 10) {
+      aprobadas++;
+    }
+    if (tarjetas[i].notaFisica >= 10) {
+      aprobadas++;
+    }
+    if (tarjetas[i].notaProgramacion >= 10) {
+      aprobadas++;
+    }
+    if (aprobadas === 2) {
+      aprobadosDosMaterias++;
+    }
+  }
+  }
+
+  // Mostramos el resultado
+  console.log(`El número de alumnos que aprobaron dos materias es: ${aprobadosDosMaterias}`);
+  // Inicializamos las variables con las notas máximas en cero
+  let notaMaximaMatematicas = 0;
+  let notaMaximaFisica = 0;
+  let notaMaximaProgramacion = 0;
+
+  // Recorremos el arreglo de tarjetas de datos y comparamos las notas de cada materia
+  for (let i = 0; i < tarjetas.length; i++) {
+  if (tarjetas[i].notaMatematicas > notaMaximaMatematicas) {
+    notaMaximaMatematicas = tarjetas[i].notaMatematicas;
+  }
+  if (tarjetas[i].notaFisica > notaMaximaFisica) {
+    notaMaximaFisica = tarjetas[i].notaFisica;
+  }
+  if (tarjetas[i].notaProgramacion > notaMaximaProgramacion) {
+    notaMaximaProgramacion = tarjetas[i].notaProgramacion;
+  }
+ }
+
+ // Mostramos el resultado
+ console.log(`La nota máxima en matemáticas es: ${notaMaximaMatematicas}`);
+ console.log(`La nota máxima en física es: ${notaMaximaFisica}`);
+ console.log(`La nota máxima en programación es: ${notaMaximaProgramacion}`);
+   
+  
+ </script>
+
+ <h1>Resultados:</h1>
+ <h2>alumnos</h2>
+ <ul>
+  <li><samp id="tarjetasDatos"></samp></li>
+ </ul>
+
+ <h2>Nota promedio de cada materia:</h2>
+ <ul>
+  <li>Matemáticas: <span id="promedioMatematicas"></span></li>
+  <li>Física: <span id="promedioFisica"></span></li>
+  <li>Programación: <span id="promedioProgramacion"></span></li>
+ </ul>
+
+ <h2>Número de alumnos aprobados en cada materia:</h2>
+ <ul>
+  <li>Matemáticas: <span id="aprobadosMatematicas"></span></li>
+  <li>Física: <span id="aprobadosFisica"></span></li>
+  <li>Programación: <span id="aprobadosProgramacion"></span></li>
+ </ul>
+
+ <h2>Número de alumnos aplazados en cada materia:</h2>
+ <ul>
+  <li>Matemáticas: <span id="aplazadosMatematicas"></span></li>
+  <li>Física: <span id="aplazadosFisica"></span></li>
+  <li>Programación: <span id="aplazadosProgramacion"></span></li>
+ </ul>
+
+ <h2>Número de alumnos que aprobaron todas las materias:</h2>
+ <p><span id="aprobadosTodas"></span></p>
+
+ <h2>Número de alumnos que aprobaron una sola materia:</h2>
+ <p><span id="aprobadosUnaSola"></span></p>
+
+ <h2>Número de alumnos que aprobaron dos materias:</h2>
+ <p><span id="aprobadosDos"></span></p>
+
+ <h2>Nota máxima en cada materia:</h2>
+ <ul>
+  <li>Matemáticas: <span id="maximaMatematicas"></span></li>
+  <li>Física: <span id="maximaFisica"></span></li>
+  <li>Programación: <span id="maximaProgramacion"></span></li>
+ </ul>
+ </body>
+</html>
